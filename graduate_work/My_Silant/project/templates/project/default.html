@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <html lang="en">
+    <head>
+      <title>{{ title }}</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <link
+      <!-- Bootstrap CSS (jsDelivr CDN) -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+      <!-- Bootstrap Bundle JS (jsDelivr CDN) -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+     
+      <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+  
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    </head>
+</head>
+<body>
+  <header>
+
+    <div class="brd_header">
+      <img src="https://static.tildacdn.com/tild6532-6137-4664-b962-623539363734/photo.svg"
+       class="tmenu-mobile__imglogo" imgfield="img" style="max-width: 150px; width: 150px;" alt="Логотип">
+     
+      <h2 class="first">+7-8352-20-12-09</h2> 
+       <a href="https://t.me/chzsa21" target="_blank" class="bi bi-telegram"></a>
+     
+      <h2 class="text">Электронная сервисная книжка "Мой Силант"</h2>
+
+      <div style="text-align: right;">
+      {% if user.is_authenticated %}
+      <span class="username" style="color: #163E6C;">{{user.username}}</span>
+     <a href="{% url 'logout' %}">
+<button type="button" class="btn btn-danger">Выйти</button></a>
+        {%else%}
+        <a href="{% url 'login' %}">
+        <button type="button" class="btn btn-danger">Авторизация</button></a>
+                {% endif %}
+    </div>
+  </div>
+  </header>
+
+    
+
+    
+            {% block content %}
+          
+            {% endblock content %}
+   
+    <footer>
+      <div class "footer"> 
+        <img class="t420__logo t-img" src="https://static.tildacdn.com/tild6564-6663-4932-b030-666135653631/svg.svg" 
+        imgfield="img" style="max-width: 300px;" alt="Логотип ЧЗСА">
+      </div>
+      <div style="display: inline-block;">
+        <h2 class="second">+7-8352-20-12-09</h2> 
+         <a href="https://t.me/chzsa21" target="_blank" class="bi bi-telegram"></a>     
+         <pstyle="display: inline-block; vertical-align: top;>Мой Силант 2023</p>
+             
+          
+        </footer>
+  {% block scripts %}
+        {% endblock %}
+  </body>
+  </html>

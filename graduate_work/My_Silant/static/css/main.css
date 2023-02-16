@@ -1,0 +1,233 @@
+@font-face {
+  font-family: "PT Astra Sans Regular";
+  src: url(../fonts/pt-astra-sans_regular.ttf);
+  
+}
+
+@font-face {
+  font-family: "PT Astra Sans Italic";
+  src: url(../fonts/pt-astra-sans_italic.ttf);
+  
+}
+
+@font-face {
+  font-family: "PT Astra Sans Bold";
+  src: url(../fonts/pt-astra-sans_bold.ttf);
+  
+}
+
+
+body {
+    margin: 0;
+    font-family: "PT Astra Sans Regular", Roboto, OpenSans,sans-serif ;
+    padding: 0;
+  }
+  
+  /* Make the layout stretch to fit the screen */
+  .container {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  
+  /* Media Queries for different screen resolutions */
+  @media screen and (min-width: 1920px) {
+    .container {
+      width: 1920px;
+    }
+  }
+  @media screen and (min-width: 1366px) and (max-width: 1919px) {
+    .container {
+      width: 1366px;
+    }
+  }
+  @media screen and (min-width: 1536px) and (max-width: 1365px) {
+    .container {
+      width: 1536px;
+    }
+  }
+  @media screen and (min-width: 1440px) and (max-width: 1535px) {
+    .container {
+      width: 1440px;
+    }
+  }
+  @media screen and (min-width: 360px) and (max-width: 479px) {
+    .container {
+      width: 360px;
+    }
+  }
+  
+
+.brd_header {
+    display: block;
+    background-color: #EBE6D6;
+    align-items: center;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 30px;
+    
+}
+
+.brd_header img {
+    display: block;
+    align-items: left;
+  }
+
+
+.first {
+    display: inline-block;
+    margin: 0;
+    font-family: "PT Astra Sans Regular";
+    text-align: center;
+    color: #163E6C;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight:600
+
+}
+
+.text {
+    font-weight: bold;
+    font-family: "PT Astra Sans Regular";
+    text-align: center;
+    color: #163E6C;
+    color: #163e6c;
+    font-size: 36px;
+    line-height: NaN;
+    font-weight: 400;
+    background-position: center center;
+    border-color: transparent;
+    border-style: solid;
+
+}
+
+div.brd_header p.last {
+    float: right;
+    font-family: "PT Astra Sans Regular";
+
+}
+
+p.p-search{
+    font-family: "PT Astra Sans Regular";
+    font-size:x-large;
+    color: #163E6C;
+    text-align:center;
+    
+}
+
+form.f-search{
+    text-align:center;
+    font-size:x-large;
+}
+
+input[type="search"]{
+    font-family: "PT Astra Sans Regular";
+    font-size:x-large;
+    color: #163E6C;
+
+}
+input[type="submit"]{
+    font-family: "PT Astra Sans Regular";
+    font-size:x-large;
+    color: #d20a11;
+
+}
+
+
+button[type="submit"]{
+  color: #ffffff;
+  font-size: 20px;
+  font-family:  "PT Astra Sans Regular";
+  line-height: 1.55;
+  font-weight: 600;
+  background-color: #d20a11;
+  background-position: center center;
+  border-color: transparent;
+  border-style: solid;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    height: 100px; /* adjust height as needed */
+    background-color: #163E6C;
+    color: #f2f5f5;
+    font-family: "PT Astra Sans Regular";
+    text-align: center;
+    border: 1px dotted;
+    border-color: #163E6C;
+    padding: 30px;
+    background-color:  #163E6C;
+    padding-top: 75px;
+    padding-bottom: 90px;
+    display:block;
+  }
+
+ 
+
+.second {
+    display: inline-block;
+    margin: 0;
+    font-family: "PT Astra Sans Regular";
+    text-align: center;
+    color:  #fff;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+  .t420__logo {
+    display: block;
+    max-width: 120px;
+    width: 100%;
+}
+  
+.t420__col.t-col_3 {
+  max-width: 320px;
+  display: inline;
+  float: left;
+  margin-bottom: 30px;
+}
+
+
+
+.tn-block button[type="submit"] {
+  display:inline-block;
+  margin: 0 auto;
+  font-size: 1rem;
+  background:#d20a11;
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 0.75rem 1.25rem;
+  transition: background 0.25s, color 0.25s;
+ }
+
+.tn-block {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+
+} 
+
+.tn-block button[type="submit"]:hover {
+  color: #ffffff;
+  background: #ebe6d6;
+}
+
+table.table.table-bordered {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "PT Astra Sans Regular";
+  text-align: center;
+  border: 1px solid #163E6C;
+}
+
+.username{
+  font-family: "PT Astra Sans Regular";
+  font-size:large;
+      position: relative; 
+      top: 7px; 
+}

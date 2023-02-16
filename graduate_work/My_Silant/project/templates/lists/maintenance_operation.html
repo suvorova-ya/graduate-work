@@ -1,0 +1,102 @@
+{% extends 'project/default.html' %}
+
+
+{% block content %}
+<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+   Перейти
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{% url 'main_page' %}">Главная страница</a></li>
+    <li><a class="dropdown-item" href="{% url 'maintenance_create' %}">Добавить ТО</a></li>
+    <li><a class="dropdown-item" href="{% url 'type_Maintenance_operation_create' %}">Добавить вид ТО</a></li>
+
+   
+  </ul>
+</div>
+
+
+
+<form action="" method="get">
+  {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
+  {{ filterset.form.as_p }}
+  {# Добавим кнопку отправки данных формы #}
+  <input type="submit" value="Найти" />
+</form>
+
+<table id="maintenance_operations_table" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Вид ТО</th>
+      <th>Дата проведения ТО</th>
+      <th>Наработка, м/час</th>
+      <th>№ заказ-наряда</th>
+      <th>Дата заказ-наряда</th>
+      <th>Организация, проводившая ТО</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for m in maintenance_operations %}
+      <tr>
+        <td id="1">{{ m.type_maintenance_operation }}</td>
+        <td id="2">{{ m.date_maintenance_operation }}</td>
+        <td id="3">{{ m.operation_time }}</td>
+        <td id="4">{{ m.number_workshop_order }}</td>
+        <td id="5">{{ m.date_workshop_order }}</td>
+        <td id="6">{{ m.services_company }}</td>
+        <td class="nam left">
+          <div class="tabs">
+          <a href="{% url 'maintenance_update' m.pk %}">
+         <div class="tab active"> <span><div class="smalltext">Изменить</div></span></div></a>
+              </div>
+          </td>
+          <td class="nam left">
+            <div class="tabs">
+                <a href="{% url 'maintenance_delete' m.pk %}">
+                    <div class="tab active"><span><div class="smalltext">Удалить</div></span></div></a></div>
+        </td>
+      </tr>
+      </tr>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+const tableRows = document.querySelectorAll('table tbody tr');
+  tableRows.forEach(row => {
+    row.addEventListener('click', () => {
+      const maintenanceOperationId = row.getAttribute('data-id');
+      window.location.href = `/maintenance_operation/${maintenanceOperationId}/`;
+    });
+  });
+  
+
+
+</script>
+{% endblock %}

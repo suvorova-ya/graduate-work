@@ -1,0 +1,17 @@
+{% extends 'project/default.html' %}
+{% load static %}
+
+  <title> Главная страница </title>
+   
+    
+{% block content %}
+  <p class="p-search">Проверьте комплектацию и технические характеристики техники Силант</p>
+      <form class='f-search'  action="{% url 'search_results' %}" method="get">
+        {% comment %} <label for="search">Проверьте комплектацию и технические характеристики техники Силант</label><br> {% endcomment %}
+        <input type="search" id="search" name="number" placeholder="Введите заводской номер"><br>
+        <button class'b-search' type="submit">Поиск</button>
+      </form>
+
+   
+
+      {% endblock content %}

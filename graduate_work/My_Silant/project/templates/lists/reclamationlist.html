@@ -1,0 +1,90 @@
+{% extends 'project/default.html' %}
+
+
+{% block content %}
+<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+   Перейти
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{% url 'main_page' %}">Главная страница</a></li>
+    <li><a class="dropdown-item" href="{% url 'reclamation_create' %}">Добавить рекламацию</a></li>
+    <li><a class="dropdown-item" href="{% url 'failureDescription_create' %}">Добавить характер отказа</a></li>
+    <li><a class="dropdown-item" href="{% url 'repairingType_create' %}">Добавить способ восстановления</a></li>
+
+
+   
+  </ul>
+</div>
+
+<form action="" method="get">
+    {{ filterset.form.as_p }}
+    <input type="submit" value="Найти" />
+</form>
+
+<table id="maintenance_operations_table" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Дата отказа</th>
+      <th>Наработка, м/час</th>
+      <th>Узел отказа</th>
+      <th>Описание отказа</th>
+      <th>Способ восстановления</th>
+      <th>Используемые запасные части</th>
+      <th>Дата восстановления</th>
+      <th>Время простоя техники</th>
+        </tr>
+  </thead>
+  <tbody>
+    {% for n in reclamation %}
+      <tr>
+        <td>{{ n.date }}</td>
+        <td>{{ n.operation_time }}</td>
+        <td>{{ n.failure_description }}</td>
+        <td>{{ n.description_reclamation }}</td>
+        <td>{{ n.repairing_type }}</td>
+        <td>{{ n.spare_part }}</td>
+        <td>{{ n.reinstatement_date }}</td>
+        <td>{{ n.standing_time }}</td>
+        <td class="nam left">
+          <div class="tabs">
+          <a href="{% url 'reclamation_update' n.pk %}">
+         <div class="tab active"> <span><div class="smalltext">Изменить</div></span></div></a>
+              </div>
+          </td>
+          <td class="nam left">
+            <div class="tabs">
+                <a href="{% url 'reclamation_delete' n.pk %}">
+                    <div class="tab active"><span><div class="smalltext">Удалить</div></span></div></a></div>
+        </td>
+      </tr>
+      </tr>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    
+{% endblock %}
+
+
+

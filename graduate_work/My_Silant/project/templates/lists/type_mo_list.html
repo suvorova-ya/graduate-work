@@ -1,0 +1,70 @@
+{% extends 'project/default.html' %}
+
+
+{% block content %}
+<div class="btn-group">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+     Перейти
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'main_page' %}">Главная страница</a></li>
+      <li><a class="dropdown-item" href="{% url 'maintenance_create' %}">Добавить ТО</a></li>
+      <li><a class="dropdown-item" href="{% url 'type_Maintenance_operation_create' %}">Добавить вид ТО</a></li>
+  
+     
+    </ul>
+  </div>
+
+    <p class="p-search">Вид ТО</p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Наименование</th>
+                <th>Описание</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for machine in maintenance_operation %}
+            
+                    <td>{{ machine.name }}</td>
+                    <td>{{ machine.description }}</td>
+                
+                    <td class="nam left">
+                    <div class="tabs">
+                    <a href="{% url 'type_Maintenance_operation_update' machine.pk %}">
+                   <div class="tab active"> <span><div class="smalltext">Изменить</div></span></div></a>
+                        </div>
+                    </td>
+                </td>
+                <td class="nam left">
+                    <div class="tabs">
+                        <a href="{% url 'type_Maintenance_operation_delete' machine.pk %}">
+                            <div class="tab active"><span><div class="smalltext">Удалить</div></span></div></a></div>
+                </td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    
+{% endblock %}
+

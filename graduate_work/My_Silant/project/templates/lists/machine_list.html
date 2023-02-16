@@ -1,0 +1,98 @@
+{% extends 'project/default.html' %}
+
+
+{% block content %}
+<div class="btn-group">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+     Перейти
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'main_page' %}">Главная страница</a></li>
+      <li><a class="dropdown-item" href="{% url 'machine_create' %}">Добавить машину</a></li>
+      <li><a class="dropdown-item" href="{% url 'modelMashine_create' %}">Добавить модель техники</a></li>
+      <li><a class="dropdown-item" href="{% url 'modelEngine_create' %}">Добавить модель двигателя</a></li>
+      <li><a class="dropdown-item" href="{% url 'modelTransmission_create' %}">Добавить модель трансмиссии</a></li>
+      <li><a class="dropdown-item" href="{% url 'modelDriveAxle_create' %}">Добавить модель ведущего моста</a></li>
+      <li><a class="dropdown-item" href="{% url 'modelGuidingAxle_create' %}">Добавить модель управляемого моста</a></li>
+     
+    </ul>
+  </div>
+ <h2 class="text">Информация о комплектации и технических характеристиках Вашей техники</h2>
+    <p class="p-search">Информация по технике</p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Модель техники</th>
+                <th>Зав.№ машины</th>
+                <th>Модель двигателяl</th>
+                <th>Зав. № двигателя</th>
+                <th>Модель трансмиссии (производитель, артикул)</th>
+                <th>Зав. № трансмиссии</th>
+                <th>Модель  ведущего моста</th>
+                <th>Зав. № ведущего моста</th>
+                <th>Модель управляемого моста</th>
+                <th>Зав. № управляемого моста</th>
+                <th>Дата отгрузки с завода</th>
+                <th>Грузополучатель
+                (конечный потребитель)</th>
+                <th>Адрес поставки
+                    (эксплуатации)</th>
+                <th>Комплектация 
+                    (доп. опции)</th>
+                <th>Сервисная компания</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for machine in machines %}
+            
+                    <td>{{ machine.model_mashine }}</td>
+                    <td>{{ machine.id_number }}</a></td>
+                    <td>{{ machine.model_engine }}</td>
+                    <td>{{ machine.number_engine }}</td>
+                    <td>{{ machine.model_transmission }}</td>
+                    <td>{{ machine.number_transmission }}</td>
+                    <td>{{ machine.model_drive_axle }}</td>
+                    <td>{{ machine.number_drive_axle }}</td>
+                    <td>{{ machine.model_guiding_axle }}</td>
+                    <td>{{ machine.number_guiding_axle }}</td>
+                    <td>{{ machine.delivery_date }}</td>                    
+                    <td>{{ machine.recipient }}</td>
+                    <td>{{ machine.delivery_address }}</td>
+                    <td>{{ machine.equipment_package }}</td>
+                    <td>{{ machine.services_company }}</td>
+                    <td class="nam left">
+                    <div class="tabs">
+                    <a href="{% url 'machine_update' machine.pk %}">
+                   <div class="tab active"> <span><div class="smalltext">Изменить</div></span></div></a>
+                        </div>
+                    </td>
+                    <td class="nam left">
+                        <div class="tabs">
+                            <a href="{% url 'machine_delete' machine.pk %}">
+                                <div class="tab active"><span><div class="smalltext">Удалить</div></span></div></a></div>
+                    </td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    
+{% endblock %}

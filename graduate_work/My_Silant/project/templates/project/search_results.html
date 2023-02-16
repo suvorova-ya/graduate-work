@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Результат поиска</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+
+<link href="{% static 'css/main.css' %}" rel="stylesheet" />
+
+</head>
+<body>
+    <a class="btn btn-outline-danger" href="{% url 'index' %}" role="button">Главная страница</a>
+
+    <p class="p-search">Результат поиска:</p>
+    
+    {% if machine %}
+
+        {% for m in machine %}
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="">Зав.№ машины</th>
+              <th scope="">Модель техники</th>
+              <th scope="">Модель двигателя</th>
+              <th scope="">Зав.№ двигателя</th>
+              <th scope="">Модель трансмиссии</th>
+              <th scope="">Зав.№ трансмиссии</th>
+              <th scope="">Модель ведущего моста</th>
+              <th scope="">Зав.№ ведущего моста</th>
+              <th scope="">Модель управляемого моста</th>
+              <th scope="">Зав. № управляемого моста</th>
+            </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <td>{{ m.id_number }}</td>
+            <td>{{ m.model_mashine }}</td> 
+            <td>{{ m.model_engine}}</td>
+            <td>{{m.number_engine }}</td>
+            <td>{{m.model_transmission}}</td>
+            <td>{{m.number_transmission }}</td>
+            <td>{{ m.model_drive_axle }}</td>
+            <td>{{ m.number_drive_axle }}</td>
+            <td>{{ m.model_guiding_axle }}</td>
+            <td>{{ m.number_guiding_axle }}</td>
+          </tr>
+          </tbody>
+        </table> 
+
+                    
+      {% endfor %}
+    
+  {% else %}
+    <p>Данных о машине с таким заводским номером нет в системе.</p>
+  {% endif %}
+
+</body>
+</html>
+

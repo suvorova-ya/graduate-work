@@ -1,0 +1,74 @@
+{% extends 'project/default.html' %}
+
+
+{% block content %}
+{% comment %} <td class="nam right">
+  <div class="tabs">
+      <a href="{% url 'reclamation_create' %}">
+          <div class="tab active"><span><div class="smalltext">Добавить модель</div></span></div></a></div> {% endcomment %}
+
+<h1>Машина: {{ machine.model_mashine }} Заводской номер: {{ machine.id_number }}  </h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Дата отказа</th>
+      <th>Наработка, м/час</th>
+      <th>Узел отказа</th>
+      <th>Описание отказа</th>
+      <th>Способ восстановления</th>
+      <th>Используемые запасные части</th>
+      <th>Дата восстановления</th>
+      <th>Время простоя техники</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for machine_reclamation in machine_reclamation %}
+      <tr>
+        <td>{{ machine_reclamation. date }}</td>
+        <td>{{ machine_reclamation.operation_time }}</td>
+        <td>{{ machine_reclamation.failure_description }}</td>
+        <td>{{ machine_reclamation.description_reclamation }}</td>
+        <td>{{ machine_reclamation.repairing_type}}</td>
+        <td>{{machine_reclamation.spare_part }}</td>
+        <td>{{machine_reclamation.reinstatement_date }}</td>
+        <td>{{machine_reclamation.standing_time }}</td>
+        {% comment %} <td class="nam left">
+          <div class="tabs">
+          <a href="{% url 'reclamation_update' machine_reclamation.pk %}">
+         <div class="tab active"> <span><div class="smalltext">Изменить</div></span></div></a>
+              </div> {% endcomment %}
+          {% comment %} </td>
+          <td class="nam left">
+              <div class="tabs">
+                  <a href="{% url 'reclamation_delete' machine_reclamation.id %}">
+                      <div class="tab active"><span><div class="smalltext">Удалить</div></span></div></a></div>
+          </td> {% endcomment %}
+      </tr>
+      </tr>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'project/default.html' %}
+
+{% block content %}
+
+
+   
+   <div class="result_info">
+    <span class="username">Добро пожаловать, {{request.user.username}}!</span></div>
+    <h2 class="text"> Информация о комплектации и технических характеристиках Вашей техники</h2>
+
+   <h2 h2 class="text">Таблицы с данными:<h2/>
+    <div class="tn-block">
+       
+      <button type="submit" onclick="location.href='{% url 'machine_list'%}'">Общая информация о технике</button>
+      <button type="submit" onclick="location.href='{% url 'maintenance_operation'%}'">ТО</button>
+      <button type="submit" onclick="location.href='{% url 'reclamation'%}'">Рекламации</button>
+        
+      </div>
+   
+
+   {% block scripts %}
+
+
+    {% endblock %}
+     {% endblock %}
+
+    
