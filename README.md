@@ -38,8 +38,8 @@
 ##  Запуск проекта
 
 ```bash
-git clone https://github.com/suvorova-ya/graduate-work.git
-cd graduate-work
+git clone https://github.com/suvorova-ya/my-silant.git
+cd my-silant
 
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
